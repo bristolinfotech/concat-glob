@@ -1,0 +1,53 @@
+{
+  "private": false,
+  "name": "@bristolinfotech/concat-glob",
+  "version": "0.0.1",
+  "description": "concat-glob",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bristolinfotech/concat-glob.git"
+  },
+  "bin": {
+    "concat-glob": "dist/cli.js"
+  },
+  "scripts": {
+    "prepublish": "yarn build",
+    "build": "rimraf dist && yarn lint && tsc",
+    "start": "concurrently --kill-others --names \"tsc,tslint\" -c \"bold.blue,magenta.bold\" \"yarn watch:typescript\" \"yarn watch:lint\"",
+    "lint": "tslint -t stylish -c tslint.json -p tsconfig.json 'src/**/*.ts' 'src/**/*.tsx'",
+    "watch:typescript": "tsc --watch",
+    "watch:lint": "watch -p \"src/**/*.ts\" -p \"src/**/*.tsx\" -c \"yarn lint\""
+  },
+  "authors": [
+    "Carl Craig <carl@bristolinfotech.com>",
+    "Loki Wijnen <loki@bristolinfotech.com>"
+  ],
+  "license": "MIT",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "commander": "^2.11.0",
+    "globby": "^6.1.0",
+    "graceful-fs": "^4.1.11",
+    "tslib": "^1.8.0"
+  },
+  "devDependencies": {
+    "@bristolinfotech/tslint-rules": "^1.0.0",
+    "@types/commander": "^2.11.0",
+    "@types/glob": "^5.0.33",
+    "@types/globby": "^6.1.0",
+    "@types/graceful-fs": "^4.1.2",
+    "concurrently": "^3.5.0",
+    "rimraf": "^2.6.2",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.3",
+    "watch-cli": "^0.2.2"
+  }
+}
