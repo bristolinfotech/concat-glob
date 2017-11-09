@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import chalk from 'chalk';
 import * as program from 'commander';
 import * as fs from 'graceful-fs';
